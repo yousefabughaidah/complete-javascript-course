@@ -36,7 +36,6 @@ const appleAndOrangeJuice = fruitProcessor(2, 4);
 console.log(appleAndOrangeJuice);
 
 
-TESTING 123
-
+THIS IS ANOTHER TEST @ 3:47 PM
 
 CLOSE OFF HERE ---------------------------------------------------------------------- */
