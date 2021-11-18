@@ -40,4 +40,57 @@ THIS IS ANOTHER TEST @ 3:47 PM
 THIS IS ANOTHER TEST @ 3:49 PM
 THIS IS A THIRD AND FINAL TEST @ 7:34 PM
 
+
+// Function Declaration
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+const age1 = calcAge1(1991);
+console.log(age1);
+
+// Function Expression
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const age2 = calcAge2(1991);
+console.log(age2);
+
+
+// Let's talk about Arrow Functions
+
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+const yearsUntilRetirement = birthYear => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return retirement
+}
+
+console.log(yearsUntilRetirement(1991))
+
+const yearsUntilRetirement2 = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return `Hey ${firstName}. You have ${retirement} years until you have to retire.`
+}
+
+console.log(yearsUntilRetirement2(birthYear = 1991, firstName = 'Yousef'))
 CLOSE OFF HERE ---------------------------------------------------------------------- */
+
+// A machine that cuts fruit into 4 pieces (no matter what the fruit is)
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+    const applePieces = cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+    const juice = `Juice was made with ${applePieces} pieces of apple, and ${orangePieces} pieces of orange.`
+    return juice
+}
+
+console.log(fruitProcessor(2, 3))
