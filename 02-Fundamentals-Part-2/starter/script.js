@@ -79,7 +79,6 @@ const yearsUntilRetirement2 = (birthYear, firstName) => {
 }
 
 console.log(yearsUntilRetirement2(birthYear = 1991, firstName = 'Yousef'))
-CLOSE OFF HERE ---------------------------------------------------------------------- */
 
 // A machine that cuts fruit into 4 pieces (no matter what the fruit is)
 function cutFruitPieces(fruit) {
@@ -94,3 +93,32 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3))
+CLOSE OFF HERE ---------------------------------------------------------------------- */
+
+// ASSIGNMENT!
+// First, create an arrow function called 'calcAverage' to calculate the average of 3 scores.
+const calcAverage = (score1, score2, score3) => ((score1 + score2 + score3) / 3);
+
+// 2nd, use the function to calculate the average for both teams
+let dolphinsAverageScore, koalasAverageScore; // we'll input the numbers later
+
+// create a function called 'checkWinner' that takes the average score of each team as parameters, and then logs the winner to the console, together with the victory points
+function checkWinner(avgDolphins, avgKoalas) {
+    if (avgDolphins >= avgKoalas * 2) {
+        return `Dolphins win! (Dolphins: ${avgDolphins} vs Koalas: ${avgKoalas})`;
+    } else if (avgKoalas >= avgDolphins * 2) {
+        return `Koalas win! (Dolphins: ${avgDolphins} vs Koalas: ${avgKoalas})`;
+    } else {
+        return `Nobody wins. (Dolphins: ${avgDolphins} vs Koalas: ${avgKoalas})`;
+    }
+}
+
+// Test Data A
+dolphinsAverageScore = calcAverage(44, 23, 71);
+koalasAverageScore = calcAverage(65, 54, 49);
+console.log(checkWinner(dolphinsAverageScore, koalasAverageScore));
+
+// Test Data B
+dolphinsAverageScore = calcAverage(85, 54, 71);
+koalasAverageScore = calcAverage(23, 34, 27);
+console.log(checkWinner(dolphinsAverageScore, koalasAverageScore));
