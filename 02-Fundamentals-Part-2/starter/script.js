@@ -159,7 +159,6 @@ console.log(friends.indexOf("Steven"))
 
 console.log(friends.includes("Michael"));
 console.log(friends.includes("Reem"));
-CLOSE OFF HERE ---------------------------------------------------------------------- */
 
 // CODING CHALLENGE!
 
@@ -186,3 +185,101 @@ const calcTotal = (billAmount, tipAmount) => billAmount + tipAmount;
 const total = [calcTotal(bills[0], tips[0]), calcTotal(bills[1], tips[1]), calcTotal(bills[2], tips[2])];
 console.log(total);
 
+
+// Let's talk about objects now :D
+
+const yousefArray = [
+    'Yousef',
+    'Abu Ghaidah',
+    2037 - 1991,
+    'Designer'
+    ['Reem', 'Emad', 'Rima']
+];
+
+const yousef = {
+    firstName: 'Yousef',
+    lastName: 'Abu Ghaidah',
+    age: 2037 - 1989,
+    job: 'Designer',
+    family: ['Reem', 'Emad', 'Rima'],
+};
+
+const nameKey = 'Name';
+console.log(yousef['first' + nameKey]);
+
+const interestedIn = prompt('What do you want to know about Yousef? Choose between firstName, lastName, age, job, and friends?')
+console.log(interestedIn);
+
+if (yousef[interestedIn]) {
+    console.log(yousef[interestedIn]);
+} else {
+    console.log('Wrong request. What do you want to know about Yousef? Choose between firstName, lastName, age, job, and friends?')
+}
+yousef.location = 'Doha';
+// or
+yousef[twitter] = '@YousefAbuGhaidah'
+
+console.log(yousef)
+
+
+const yousef = {
+    firstName: 'Yousef',
+    lastName: 'Abu Ghaidah',
+    age: 2037 - 1989,
+    job: 'Designer',
+    family: ['Reem', 'Emad', 'Rima'],
+};
+
+// "Yousef has 3 friends, and his best friend is called Reem"
+
+const msg = `${yousef.firstName} has ${yousef.family.length} friends, and his best friend is called ${yousef.family[0]}`;
+console.log(msg);
+
+
+const yousef = {
+    firstName: 'Yousef',
+    lastName: 'Abu Ghaidah',
+    birthYear: 1989,
+    job: 'Designer',
+    family: ['Reem', 'Emad', 'Rima'],
+    hasDriversLicense: false,
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()} year old ${this.job}, and he ${this.hasDriversLicense ? "has a" : "does not have a"} driver's license`
+    },
+};
+
+console.log(yousef.getSummary())
+
+// challenge
+// "Yousef is a 32 year old teacher. and he has a driver's license."
+
+
+const markData = {
+    firstName: 'Mark',
+    lastName: 'Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.bmi = this.mass / (this.height ** 2);
+        return this.bmi;
+    },
+};
+
+const johnData = {
+    firstName: 'John',
+    lastName: 'Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.bmi = this.mass / (this.height ** 2);
+        return this.bmi;
+    },
+};
+
+console.log(markData.calcBMI() > johnData.calcBMI() ? `Mark's BMI (${markData.bmi}) is higher than John's BMI (${johnData.bmi})` : `Johns's BMI (${johnData.bmi}) is higher than Mark's BMI (${markData.bmi})`);
+
+CLOSE OFF HERE ---------------------------------------------------------------------- */
