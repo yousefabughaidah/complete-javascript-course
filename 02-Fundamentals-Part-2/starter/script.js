@@ -1,5 +1,5 @@
-/*
 'use strict';
+/*
 
 let hasDriversLicense = false;
 const passTest = true;
@@ -93,7 +93,6 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3))
-CLOSE OFF HERE ---------------------------------------------------------------------- */
 
 // ASSIGNMENT!
 // First, create an arrow function called 'calcAverage' to calculate the average of 3 scores.
@@ -122,3 +121,68 @@ console.log(checkWinner(dolphinsAverageScore, koalasAverageScore));
 dolphinsAverageScore = calcAverage(85, 54, 71);
 koalasAverageScore = calcAverage(23, 34, 27);
 console.log(checkWinner(dolphinsAverageScore, koalasAverageScore));
+
+// Introduction to arrays
+// This is how you usually do it
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+const friends = ['Michael', 'Steven', 'Peter']
+friends[2] = "Yousef"
+console.log(friends)
+
+const firstName = 'Yousef';
+const yousef = [firstName, "Abu Ghaidah", 2021 - 1989, friends];
+console.log(yousef);
+
+// Exercise
+const calcAge = function (birthYear) {
+    return 2037 - birthYear
+}
+
+const years = [1990, 1967, 2002, 2010, 2018];
+
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])]
+
+console.log(ages);
+
+
+// const age1 = calcAge(years[0]); // The first one in the array
+// const age2 = calcAge(years[1]); // The second one in the array
+// const age3 = calcAge(years[years.length - 1]); // The third one in the array
+
+
+const friends = ['Michael', 'Steven', 'Peter'];
+const newLength = friends.push("Patrice");
+console.log(friends.indexOf("Steven"))
+
+console.log(friends.includes("Michael"));
+console.log(friends.includes("Reem"));
+CLOSE OFF HERE ---------------------------------------------------------------------- */
+
+// CODING CHALLENGE!
+
+// write a function called calcTip that takes the bill amount as input and follows the rules (15% for 50 to 300, 20% for anything else)
+const calcTip = billAmount => {
+    if (billAmount >= 50 && billAmount <= 300) {
+        return billAmount * 0.15;
+    } else {
+        return billAmount * 0.2;
+    }
+}
+
+console.log(calcTip(100)); // this is a test to see if the function works
+
+// create an array called 'bills' that includes the test data
+const bills = [125, 555, 44];
+
+// create an array called 'tips' that calculates the tips for each bill in the 'bills' array
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length - 1])];
+console.log(tips);
+
+// create an array called 'total' which contains the total values (bill + tip)
+const calcTotal = (billAmount, tipAmount) => billAmount + tipAmount;
+const total = [calcTotal(bills[0], tips[0]), calcTotal(bills[1], tips[1]), calcTotal(bills[2], tips[2])];
+console.log(total);
+
