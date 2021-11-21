@@ -282,4 +282,67 @@ const johnData = {
 
 console.log(markData.calcBMI() > johnData.calcBMI() ? `Mark's BMI (${markData.bmi}) is higher than John's BMI (${johnData.bmi})` : `Johns's BMI (${johnData.bmi}) is higher than Mark's BMI (${markData.bmi})`);
 
+
+// for loop keeps running while the condition is TRUE
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights reptition ${rep}`)
+}
+
 CLOSE OFF HERE ---------------------------------------------------------------------- */
+
+// const yousef = [
+//     'Yousef',
+//     'Abu Ghaidah',
+//     2037 - 1991,
+//     'Designer',
+//     ['Reem', 'Emad', 'Rima'],
+//     true
+// ];
+
+// const types = []
+
+
+// for (let i = 0; i < yousef.length; i++) {
+//     // console.log(yousef[i], typeof yousef[i]);
+//     // types[i] = typeof yousef[i]
+//     types.push(typeof yousef[i])
+// }
+
+// console.log(types)
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//     const age = 2037 - years[i];
+//     ages.push(age);
+// }
+
+// console.log(ages)
+
+// continue and break statements
+
+const yousef = [
+    'Yousef',
+    'Abu Ghaidah',
+    2037 - 1991,
+    'Designer',
+    ['Reem', 'Emad', 'Rima'],
+    true
+];
+
+for (let i = 0; i < yousef.length; i++) {
+    console.log(yousef[i], typeof yousef[i]);
+}
+
+console.log("--- Only strings! ---")
+for (let i = 0; i < yousef.length; i++) {
+    if (typeof yousef[i] !== 'string') continue;
+    console.log(yousef[i], typeof yousef[i]);
+}
+
+console.log("--- Exit after number ---")
+for (let i = 0; i < yousef.length; i++) {
+    if (typeof yousef[i] === 'number') break;
+    console.log(yousef[i], typeof yousef[i]);
+}
