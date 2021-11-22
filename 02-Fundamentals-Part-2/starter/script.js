@@ -288,7 +288,6 @@ for (let rep = 1; rep <= 10; rep++) {
     console.log(`Lifting weights reptition ${rep}`)
 }
 
-CLOSE OFF HERE ---------------------------------------------------------------------- */
 
 // const yousef = [
 //     'Yousef',
@@ -346,3 +345,101 @@ for (let i = 0; i < yousef.length; i++) {
     if (typeof yousef[i] === 'number') break;
     console.log(yousef[i], typeof yousef[i]);
 }
+
+
+const yousef = [
+    'Yousef',
+    'Abu Ghaidah',
+    2037 - 1991,
+    'Designer',
+    ['Reem', 'Emad', 'Rima'],
+];
+
+// 0, 1, ... 4. Now we want to start at 4.
+
+for (let i = yousef.length - 1; i >= 0; i--) {
+    console.log(i, yousef[i])
+}
+
+console.log("loop in a loop:")
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`---- Starting exercise ${exercise}`);
+    for (let rep = 1; rep <= 5; rep++) {
+        console.log(`Lifting weight for exercise ${exercise} repitition ${rep}`);
+    }
+}
+
+
+
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weight, repition no.: ${rep}`);
+    rep++
+}
+
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log(`Loop is going to end now.`)
+}
+
+
+// CODING CHALLENGE! LETS GOOOOOOO!
+
+// create an array called bills that has 10 values
+const bills = [
+    22,
+    295,
+    176,
+    440,
+    37,
+    105,
+    10,
+    1100,
+    86,
+    52
+];
+
+// create empty arrays for the tips and the totals
+const tips = [];
+const totals = [];
+
+const calcTip = billAmount => {
+    if (billAmount >= 50 && billAmount <= 300) {
+        return billAmount * 0.15;
+    } else {
+        return billAmount * 0.2;
+    }
+};
+
+for (let i = 0; i <= bills.length - 1; i++) {
+    // calculate the tip and totals
+    const tip = calcTip(bills[i]);
+    const total = tip + bills[i];
+    // push the tip in the tips array
+    tips.push(tip);
+    // push the total in the totals array
+    totals.push(total);
+}
+
+console.log(tips);
+console.log(totals);
+
+// write a function called calcAverage which takes an array 'arr' as an argument. Thios function calculates the average of all the numbers in the given array:
+const calcAverage = arr => {
+    let total = 0;
+    for (let i = 0; i <= arr.length - 1; i++) {
+        total += arr[i];
+    }
+    const avg = total / arr.length;
+    return avg;
+}
+
+console.log(calcAverage(totals));
+
+CLOSE OFF HERE ---------------------------------------------------------------------- */
