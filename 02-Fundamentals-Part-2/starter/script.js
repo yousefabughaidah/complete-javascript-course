@@ -443,3 +443,5 @@ const calcAverage = arr => {
 console.log(calcAverage(totals));
 
 CLOSE OFF HERE ---------------------------------------------------------------------- */
+
+console.log('check to see if it works')
