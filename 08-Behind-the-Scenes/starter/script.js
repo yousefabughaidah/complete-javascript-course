@@ -32,7 +32,7 @@ console.log(year);
 var me = 'Yousef';
 let job = 'designer';
 const year = 1989;
------- ENDING CODE */
+
 console.log(addDecl(2, 3));
 // console.log(addExpr(2, 3));
 // console.log(addArrow(2, 3));
@@ -46,3 +46,110 @@ const addExpr = function (a, b) {
 };
 
 const addArrow = (a, b) => a + b;
+
+
+// console.log(this);
+
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+
+// calcAge(1991);
+
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+
+// calcAge(1991);
+// calcAgeArrow();
+
+// method borrowing?
+
+const yousef = {
+  year: 1991,
+  calcAge: function () {
+    console.log(2037 - this.year);
+  },
+};
+
+const reem = {
+  year: 1998,
+};
+
+console.log(reem);
+reem.calcAge = yousef.calcAge;
+console.log(reem);
+
+const f = yousef.calcAge;
+console.log(f);
+
+
+const yousef = {
+  firstName: 'Yousef',
+  year: 1991,
+  calcAge: function () {
+    console.log(2037 - this.year);
+
+    const isMillenial = () => {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+  greet: () => console.log(`Hey ${this.firstName}`),
+};
+
+yousef.greet();
+yousef.calcAge();
+
+
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+addExpr(2, 5);
+
+let age = 30;
+let oldAge = age;
+age += 1;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Yousef',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+
+console.log(`Friend: ${friend.age}`);
+console.log(`Me: ${me.age}`);
+------ ENDING CODE */
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+
+console.log(`Before marriage: ${jessica.lastName}`);
+console.log(`After marriage: ${marriedJessica.lastName}`);
+
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+console.log(`Before marriage: ${jessica2.lastName}`);
+console.log(`After marriage: ${jessicaCopy.lastName}`);
