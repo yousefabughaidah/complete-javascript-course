@@ -4,6 +4,21 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const hours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -11,8 +26,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  hours,
 
-  order: function (starterInd, mainInd) {
+  order(starterInd, mainInd) {
     return [this.starterMenu[starterInd], this.mainMenu[mainInd]];
   },
 
@@ -52,6 +68,77 @@ const restaurant = {
     },
   },
 };
+
+// // Looping over property names (or, keys)
+// console.log(`====LOOPING OVER PROPERTY NAMES====`);
+
+// const openingTimesProperties = Object.keys(restaurant.openingHours);
+
+// console.log(openingTimesProperties);
+
+// console.log(`We are open ${openingTimesProperties.length} days a week`);
+
+// for (const day of openingTimesProperties) {
+//   console.log(day);
+// }
+
+// opener = `We are open on: `;
+// for (const day of openingTimesProperties) {
+//   opener += `${day}, `;
+// }
+
+// console.log(opener);
+
+// console.log(`====LOOPING OVER VALUES====`);
+// const openingTimesValues = Object.values(restaurant.openingHours);
+
+// console.log(openingTimesValues);
+
+// console.log(`====LOOPING OVER ENTRIES====`);
+
+// const openingTimesEntries = Object.entries(restaurant.openingHours);
+// console.log(openingTimesEntries);
+
+// for (const [key, { open, close }] of openingTimesEntries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
+
+// for (const day of Object.keys(restaurant.openingHours)) {
+//   console.log(day);
+// }
+
+// if (restaurant.openingHours.mon && restaurant.openingHours)
+//   console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
+
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of days) {
+//   let isOpen = restaurant.openingHours[day]?.open ?? 'closed';
+//   isOpen =
+//     isOpen !== 'closed' ? `We're open on ${day} at ${isOpen}` : `We're closed`;
+//   console.log(isOpen);
+// }
+
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed'; // gives the time when there is a day that the rest opens, otherwise returns closed
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+// //methods?
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist'); // The method exists so we get ['Focaccia', 'Pasta']
+// console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist'); // The method does not exist.
+
+// // arrays?
+// const users = [
+//   {
+//     name: 'Yousef',
+//     email: 'test@yousef.com',
+//   },
+// ];
+
+// console.log(users[0]?.name ?? 'User array empty'); // only if name exists in the object within the array, return the name.
 
 // let [main, , secondary] = restaurant.categories;
 // console.log(main, secondary);
@@ -193,3 +280,115 @@ const restaurant = {
 
 // restaurant.orderPizza('mushrooms', 'onions', 'olives', 'spinach');
 // restaurant.orderPizza('mushrooms');
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item);
+
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}. ${el}`);
+// }
+
+// Coding Challenge #2 //
+
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+for (const [i, name] of game.scored.entries()) {
+  const goalEvent = i + 1;
+  console.log(`Goal ${goalEvent}: ${name} `);
+}
+
+// 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+const allOddsValues = Object.values(game.odds);
+console.log(allOddsValues);
+
+let sum = 0;
+for (const n of allOddsValues) sum += n;
+const avg = sum / allOddsValues.length;
+console.log(`The average of all the odds is ${avg}`);
+
+// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+//       Odd of victory Bayern Munich: 1.33
+//       Odd of draw: 3.25
+//       Odd of victory Borrussia Dortmund: 6.5
+
+const allOddsEntries = Object.entries(game.odds);
+
+for (const [team, odd] of allOddsEntries) {
+  const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamString} ${odd}`);
+}
+
+// BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+//       {
+//         Gnarby: 1,
+//         Hummels: 1,
+//         Lewandowski: 2
+//       }
+
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] = scorers[player] ? scorers[player] + 1 : 1; // does scorers[scorer] exist? if so, take the number and add 1. If not, keep set a default value of 1.
+}
+
+console.log(scorers);
