@@ -686,7 +686,7 @@ const flights =
 // checkMiddleSeat('23C');
 // checkMiddleSeat('3E');
 
-const airline = 'TAP Air Portugal';
+// const airline = 'TAP Air Portugal';
 
 // console.log(airline.toLowerCase());
 // console.log(airline.toUpperCase());
@@ -711,7 +711,98 @@ const airline = 'TAP Air Portugal';
 //   'All passengers come to boarding door 23. Boarding door 23!';
 // console.log(announcement.replaceAll('door', 'gate'));
 
-const plane = 'A320neo';
-console.log(plane.includes('A320'));
+// const plane = 'A320neo';
+// console.log(plane.includes('A320'));
 
-console.log(plane.startsWith('A3'));
+// console.log(plane.startsWith('A3'));
+
+// console.log('a+very+nice+string'.split('+'));
+
+// const username = 'Yousef Abughaidah';
+// const [firstName, lastName] = username.split(' ');
+// console.log(firstName, lastName);
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+// const passenger = 'jessica ann smith davis';
+
+// const capitalizeName = function (name) {
+//   const nameArray = name.split(' ');
+//   const namesUpper = [];
+
+//   for (const n of nameArray) {
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+
+//   console.log(namesUpper.join(' '));
+// };
+
+// capitalizeName('yousef abu ghaidah');
+// capitalizeName('jessica ann smith davis');
+
+// const msg = 'Go to gate 23!';
+// console.log(msg.padStart(25, '+').padEnd(35, '+'));
+
+// const maskCreditCard = function (n) {
+//   const strN = n + ''; // this will turn whatever you want into a string
+//   const lastFourDigits = strN.slice(-4);
+//   const maskedNumber = lastFourDigits.padStart(strN.length, '*');
+//   console.log(maskedNumber);
+// };
+
+// maskCreditCard(3784329238410232);
+
+// const message = 'Bad weather... All departures are delayed. ';
+// console.log(message.repeat(5));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes n line. ${'✈️'.repeat(n)}`);
+// };
+
+// planesInLine(1);
+// planesInLine(3);
+// planesInLine(5);
+
+/* The test data
+underscore_case
+ first_name
+Some_Variable
+  calculate_AGE
+delayed_departure */
+
+// The objects
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+// Declaring the objects for reference
+const btn = document.querySelector('button');
+const textArea = document.querySelector('textarea');
+
+// The function
+const camelCaseFunction = function () {
+  const text = document.querySelector('textarea').value;
+
+  // put every line into an array to get 5 different elements
+  const textArray = text.split('\n');
+
+  // create a for loop that goes through the array and edit the text as required.
+  for (const [ind, str] of textArray.entries()) {
+    // remove the spaces and padding + make everything lower case + remove everything at the underscore level
+    const fixedStr = str.trim().toLowerCase().split('_');
+
+    // apply camel casing by adding the FIRST word unedited (since its lower case) and making the first letter of every other word capitalized, then adding it to the new string
+    let newWord = '';
+    for (let [i, x] of fixedStr.entries()) {
+      i !== 0 ? (x = x.replace(x[0], x[0].toUpperCase())) : null;
+      newWord += x;
+    }
+
+    // apply the padding and the check marks to the new string
+    newWord = newWord.padEnd(20, ' ') + '✅'.repeat(ind + 1);
+    console.log(newWord);
+  }
+};
+
+// The listener
+btn.addEventListener('click', camelCaseFunction);
