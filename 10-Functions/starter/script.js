@@ -257,15 +257,15 @@
 
 // boardPassengers(180, 3);
 
-(function () {
-  const header = document.querySelector('h1');
-  header.style.color = 'red';
+// (function () {
+//   const header = document.querySelector('h1');
+//   header.style.color = 'red';
 
-  document.addEventListener('click', function () {
-    header.style.color = 'blue';
-    console.log('you clicked me!');
-  });
-})();
+//   document.addEventListener('click', function () {
+//     header.style.color = 'blue';
+//     console.log('you clicked me!');
+//   });
+// })();
 
 // why did this work?
 // - closure is the reason why it works
