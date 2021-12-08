@@ -61,9 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+// Adding the rows of every transaction in the div box
 const displayMovements = function (movements) {
-  // containerMovements.offsetWidth - containerMovements.clientWidth;
-
   containerMovements.innerHTML = '';
 
   movements.forEach(function (mov, i) {
@@ -81,6 +80,29 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+// showing total balance on the webpage
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0); // calculating the balance of the movement
+  labelBalance.textContent = `${balance}€`;
+};
+
+calcDisplayBalance(account1.movements);
+
+// creating usernames
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(_name => _name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
+// console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -185,26 +207,100 @@ displayMovements(account1.movements);
 // console.log('yousef'.at(0)); // returns 'y'
 // console.log('yousef'.at(-1)); // returns 'f'
 
-const juliaData1 = [3, 5, 2, 12, 7];
-const kateData1 = [4, 1, 15, 8, 3];
+// const juliaData1 = [3, 5, 2, 12, 7];
+// const kateData1 = [4, 1, 15, 8, 3];
 
-const juliaData2 = [9, 16, 6, 8, 3];
-const kateData2 = [10, 5, 6, 1, 4];
+// const juliaData2 = [9, 16, 6, 8, 3];
+// const kateData2 = [10, 5, 6, 1, 4];
 
-const checkDogs = function (jData, kData) {
-  const jDataMutated = [...jData].slice(1, -2);
+// const checkDogs = function (jData, kData) {
+//   const jDataMutated = [...jData].slice(1, -2);
 
-  const dogs = [...jDataMutated, ...kData];
-  console.log(dogs);
+//   const dogs = [...jDataMutated, ...kData];
+//   console.log(dogs);
 
-  dogs.forEach(function (age, i) {
-    const adultOrPuppy =
-      age < 3 ? 'still a puppy 🐶' : `an adult, and is ${age} years old`;
-    console.log(`Dog number ${i + 1} is ${adultOrPuppy}`);
-  });
-};
+//   dogs.forEach(function (age, i) {
+//     const adultOrPuppy =
+//       age < 3 ? 'still a puppy 🐶' : `an adult, and is ${age} years old`;
+//     console.log(`Dog number ${i + 1} is ${adultOrPuppy}`);
+//   });
+// };
 
-console.log(`---TEST DATA 1---`);
-checkDogs(juliaData1, kateData1);
-console.log(`---TEST DATA 2---`);
-checkDogs(juliaData2, kateData2);
+// console.log(`---TEST DATA 1---`);
+// checkDogs(juliaData1, kateData1);
+// console.log(`---TEST DATA 2---`);
+// checkDogs(juliaData2, kateData2);
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const eurToUSD = 1.1;
+
+// // const movementsUSD = movements.map(function (mov) {
+// //   return 23;
+// // });
+
+// const movementsUSD = movements.map(mov => mov * eurToUSD);
+// console.log(movementsUSD);
+
+// const movementsDesc = movements.map((mov, i) => {
+//   return `Movement ${i + 1}: You ${
+//     mov > 0 ? 'deposited' : 'withdrew'
+//   } ${Math.abs(mov)}`;
+// });
+
+// console.log(movementsDesc);
+
+// The filter method:
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const deposits = movements.filter(mov => mov > 0);
+// const withdrawls = movements.filter(mov => mov < 0);
+
+// // const deposits = movements.filter(function (mov) {
+// //   return mov > 0;
+// // });
+
+// console.log(deposits);
+// console.log(withdrawls);
+
+// the reduce method
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// accumulator is like a snowball
+// const balance = movements.reduce(function (accumulator, value, index, array) {
+//   return accumulator + value;
+// }, 0);
+
+// const balance = movements.reduce((acc, val) => acc + val, 0);
+
+// console.log(balance);
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const maxValue = movements.reduce(
+//   (acc, val) => (acc < val ? val : acc),
+//   movements[0]
+// );
+
+// console.log(maxValue);
+
+// const calcAverageHumanAge = function (data) {
+//   const humanYearsArray = data.map(dogAge =>
+//     dogAge <= 2 ? dogAge * 2 : 16 + dogAge * 4
+//   );
+
+//   const adultDogsHumanYears = humanYearsArray.filter(age => age >= 18);
+
+//   const averageHumanAge = adultDogsHumanYears.reduce(
+//     (acc, age, i, arr) => acc + age / arr.length,
+//     0
+//   );
+
+//   console.log(humanYearsArray);
+//   console.log(adultDogsHumanYears);
+//   console.log(averageHumanAge);
+//   return averageHumanAge;
+// };
+
+// const codeChallengeTwoTestData1 = [5, 2, 4, 1, 15, 8, 3];
+// const codeChallengeTwoTestData2 = [16, 6, 10, 5, 6, 1, 4];
+
+// console.log(calcAverageHumanAge(codeChallengeTwoTestData1));
+// console.log(calcAverageHumanAge(codeChallengeTwoTestData2));
