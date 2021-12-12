@@ -80,9 +80,9 @@ const displayMovements = function (movements) {
 };
 
 // showing total balance on the webpage
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0); // calculating the balance of the movement
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function (account) {
+  account.balance = account.movements.reduce((acc, mov) => acc + mov, 0); // calculating the balance of the movement
+  labelBalance.textContent = `${account.balance}€`;
 };
 
 // showing movement in, movement out, and any interest
@@ -118,7 +118,20 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
-// Event handler
+const updateUI = function (account) {
+  displayMovements(account.movements); // display all transactions
+  calcDisplaySummary(account); // display summary info
+  calcDisplayBalance(account); // displays the total balance
+};
+
+const clearFields = function (...fields) {
+  fields.forEach(field => {
+    field.value = '';
+    field.blur();
+  });
+};
+
+// Event handler: login
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); // prevents the event from executing its default function (which is to refresh the page, since this is a form)
@@ -126,7 +139,6 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // display UI and a welcome message
@@ -141,12 +153,55 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     // display and calculate the balance, summary, and movements.
-    displayMovements(currentAccount.movements); // display all transactions
-    calcDisplaySummary(currentAccount); // display summary info
-    calcDisplayBalance(currentAccount.movements); // displays the total balance
 
-    console.log('LOGIN!');
+    updateUI(currentAccount);
   }
+});
+
+// Event handler: transfers
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAccount = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  clearFields(inputTransferAmount, inputTransferTo);
+
+  // check to see if transfer can be initiated
+  if (
+    amount > 0 && // if the amount is greater than zero
+    currentAccount.balance >= amount && // if the current account balance is greater than or equal to the amount being transferred
+    receiverAccount?.username !== currentAccount.username && // if the receiving account is different from the current account
+    receiverAccount // if the receiving account exists (true/flase)
+  ) {
+    currentAccount.movements.push(-amount);
+    receiverAccount.movements.push(amount);
+    updateUI(currentAccount); // updates the UI
+  } else {
+    console.log(`Transfer is NOT valid`);
+  }
+});
+
+// Event handler: closing account
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  // check to see if the user is correct, as well as the pin:
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    // delete the account
+    accounts.splice(index, 1);
+
+    // hide the ui
+    containerApp.style.opacity = 0;
+  } else {
+    console.log(`We can NOT delete this account :(`);
+  }
+  clearFields(inputCloseUsername, inputClosePin);
 });
 
 /////////////////////////////////////////////////
@@ -401,3 +456,5 @@ btnLogin.addEventListener('click', function (e) {
 
 // const firstWithdrawl = movements.find(mov => mov < 0);
 // console.log(firstWithdrawl);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
