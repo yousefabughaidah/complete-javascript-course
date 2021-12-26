@@ -1,12 +1,14 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1'); // remember that this is an id, hence the hash.
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,6 +32,32 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+///////////////////////////////////////
+
+// page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. Add event listener to a common parent element.
+// 2. Determine what element originiated the event.
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
 ///////////////////////////////////////
 
 // console.log(document.documentElement);
@@ -63,26 +91,25 @@ document
     message.remove();
   });
 
-message.style.backgroundColor = '#37383d';
+btnScrollTo.addEventListener('click', function (e) {
+  // find the coordinations of the section
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// const h1 = document.querySelector('h1');
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// const alertH1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading! :D');
 
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
-console.log(logo.className);
+//   setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// };
 
-logo.alt = 'Beautiful minimalist logo';
-console.log(logo.alt);
+// h1.addEventListener('mouseenter', alertH1);
 
-logo.setAttribute('company', 'Bankist');
+// h1.addEventListener('mouseenter', function (e) {
+//   alert('addEventListener: Great! You are reading the heading! :D');
+// });
 
-const link = document.querySelector('.nav__link--btn');
-console.log(link.href);
-console.log(link.getAttribute('href'));
-
-console.log(logo.dataset.versionNumber);
-console.log(logo.dataset.whoIsAmazing);
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading! :D');
+// };
